@@ -1,0 +1,17 @@
+def bul_verbum_profundum(n, words):
+    verbum_profundum = set()
+    for word in words:
+        half_length = len(word) // 2
+        first_half_reversed = word[:half_length][::-1]
+        second_half = word[half_length:]
+        for other_word in words:
+            if other_word.endswith(second_half) and first_half_reversed != second_half:
+                verbum_profundum.add(word)
+                break
+    return len(verbum_profundum)
+
+n = int(input())
+words = [input().strip() for _ in range(n)]
+
+result = bul_verbum_profundum(n, words)
+print(result)
